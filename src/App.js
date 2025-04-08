@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import './App.css'; 
+
+import { evaluate } from 'mathjs'; // Add at the top
+
+
+
 function App() {
   const [input, setInput] = useState('');
 
@@ -10,16 +15,15 @@ function App() {
   const clearInput = () => {
     setInput('');
   };
-
   const calculate = () => {
     try {
-     
-      setInput(eval(input).toString());
+      setInput(evaluate(input).toString());
     } catch (err) {
       setInput('Error');
     }
   };
-
+  
+ 
   return (
     <div className="calculator">
       <h1>React Calculator</h1>
