@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './App.css'; 
 
-import { evaluate } from 'mathjs'; // Add at the top
-
-
-
+import { evaluate } from 'mathjs';
 function App() {
   const [input, setInput] = useState('');
+  const [count,setCount] = useState('0');
 
   const handleClick = (value) => {
     setInput((prev) => prev + value);
@@ -18,15 +16,26 @@ function App() {
   const calculate = () => {
     try {
       setInput(evaluate(input).toString());
+      setCount('5');
     } catch (err) {
       setInput('Error');
     }
   };
   
- 
+ const fname = "Sashank";
+ const lname = "Reddy";
+ const age = 21;
+ const date = new Date().getFullYear();
+
+
   return (
     <div className="calculator">
+
+      <h1>Hello! My name is {fname+" "+lname}</h1>
+      <p>My age is {age}</p>
+      <p>copy right {date}</p>
       <h1>React Calculator</h1>
+      <p>{count}</p>
       <input type="text" value={input} readOnly />
       <div className="buttons">
         <button onClick={clearInput}>C</button>
